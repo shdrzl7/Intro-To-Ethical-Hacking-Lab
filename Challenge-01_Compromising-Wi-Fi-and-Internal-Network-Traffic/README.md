@@ -182,14 +182,14 @@ Demonstrate the risk of weak passwords and poor password policies.
 
 ---
 
-## Phase 3: Evil Twin Attack
+### Phase 3: Evil Twin Attack
 
-### Step 1: Create Rogue Access Point
+#### Step 1: Create Rogue Access Point
 - Set up a rogue AP using Linux Wifi Hotspot with a convincing SSID as the target on wlan1 interface. e.g., `autoshop-guest` with open no password.
   
   ![Rogue AP setup using Linux Wifi Hotspot](../images/linux_wifi_hotspot_setup.png)
 
-### Step 2: Wait Victim to Connect
+#### Step 2: Wait Victim to Connect
 **Note:** To run the deauthentication attack while simultaneously hosting an Access Point, it is highly recommended to use a *separate* Wi-Fi adapter (`wlan2` in this example) for the deauthentication, as a single adapter cannot be in both AP and monitor mode at the same time.
 1. Launch deauth to the victim to keep disconnecting the victim from legit network.
 ```bash
@@ -206,12 +206,12 @@ Demonstrate the effectiveness of social engineering when encryption and password
 
 ---
 
-## Phase 4: Internal Network Attacks
+### Phase 4: Internal Network Attacks
 
 Once you have gained access to the network (either via a cracked password or an Evil Twin attack), you can perform Man-in-the-Middle (MITM) attacks to intercept and manipulate traffic. The following steps will use `bettercap`.
 **Important:** If you gained access using the **Evil Twin** method, your machine is already the gateway for the victim. You do **not** need to perform ARP spoofing. You can skip directly to other `bettercap` modules like `net.sniff`.
 
-### Step 1: ARP Spoofing (MITM)
+#### Step 1: ARP Spoofing (MITM)
 This step is necessary if you connected to the legitimate Wi-Fi network using a cracked password. The goal is to trick the victim and the router into thinking your machine is the router, redirecting all traffic through you.
 1.  First, you must configure your attacker machine to forward packets. This allows traffic from the victim to flow *through* your machine to the legitimate gateway, maintaining their internet connection and keeping the attack transparent.
 ```bash
@@ -282,7 +282,7 @@ net.sniff on
 You can also verify the attack is working by opening Wireshark and listening on your `wlan1` interface. You will see traffic flowing from the victim's IP address.
 ![Wireshark showing intercepted traffic](../images/wireshark_mitm.png)
 
-### Step 2: SSL Stripping 
+#### Step 2: SSL Stripping 
 
 This attack attempts to downgrade a victim's secure HTTPS connections to insecure HTTP, allowing traffic to be read in plaintext.
 
@@ -298,7 +298,7 @@ set http.proxy.sslstrip true
     
     *   **Alternative:** For bypassing HSTS, a more advanced attack using the `hstshijack` caplet is required.
 
-### Step 3: DNS Spoofing 
+#### Step 3: DNS Spoofing 
 DNS spoofing (or poisoning) tricks a victim's computer into associating a legitimate domain name with a malicious IP address controlled by the attacker.
 1.  Configure the DNS Spoofing Module. In your `bettercap` session, set the domains you want to spoof and the IP address you want to redirect them to.
 ```bash
@@ -318,7 +318,7 @@ dns.spoof on
 ```
 *Now, when the victim tries to visit `vulnweb.com`, they will be sent to the IP you specified instead of the real server.*
 
-### Step 4: Malicious Code Injection (BeEF)
+#### Step 4: Malicious Code Injection (BeEF)
 This advanced attack injects a JavaScript "hook" into the victim's browser as they visit HTTP websites. This hook connects the browser to the Browser Exploitation Framework (BeEF), giving the attacker control.
 1.  Start the BeEF Framework. In a **new terminal**, launch BeEF. It will start a web server and provide you with a UI link and a hook URL.
 ```bash
