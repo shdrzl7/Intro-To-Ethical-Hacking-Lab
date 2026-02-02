@@ -244,7 +244,7 @@ set arp.spoof.fullduplex true
 # Start the ARP spoofer.
 arp.spoof on
 ```
-    *At this point, `bettercap` is poisoning the ARP cache of both the victim and the gateway. All traffic between them is now being redirected through your machine.*
+*At this point, `bettercap` is poisoning the ARP cache of both the victim and the gateway. All traffic between them is now being redirected through your machine.*
 
 5.  To speed up the process, you can save `bettercap` commands into a script file called a caplet (`.cap`). This lets you launch the attack with one command (optional).
 
@@ -316,7 +316,7 @@ set dns.spoof.all true
 ```bash
 dns.spoof on
 ```
-    *Now, when the victim tries to visit `vulnweb.com`, they will be sent to the IP you specified instead of the real server.*
+*Now, when the victim tries to visit `vulnweb.com`, they will be sent to the IP you specified instead of the real server.*
 
 ### Step 4: Malicious Code Injection (BeEF)
 This advanced attack injects a JavaScript "hook" into the victim's browser as they visit HTTP websites. This hook connects the browser to the Browser Exploitation Framework (BeEF), giving the attacker control.
