@@ -186,7 +186,8 @@ Demonstrate the risk of weak passwords and poor password policies.
 
 ### Step 1: Create Rogue Access Point
 - Set up a rogue AP using Linux Wifi Hotspot with a convincing SSID as the target on wlan1 interface. e.g., `autoshop-guest` with open no password.
-  ![Rogue AP setup using Linux Wifi Hotspot](./images/linux_wifi_hotspot_setup.png)
+  
+  ![Rogue AP setup using Linux Wifi Hotspot](../images/linux_wifi_hotspot_setup.png)
 
 ### Step 2: Wait Victim to Connect
 **Note:** To run the deauthentication attack while simultaneously hosting an Access Point, it is highly recommended to use a *separate* Wi-Fi adapter (`wlan2` in this example) for the deauthentication, as a single adapter cannot be in both AP and monitor mode at the same time.
@@ -279,7 +280,7 @@ help
 net.sniff on
 ```
 You can also verify the attack is working by opening Wireshark and listening on your `wlan1` interface. You will see traffic flowing from the victim's IP address.
-![Wireshark showing intercepted traffic](./images/wireshark_mitm.png)
+![Wireshark showing intercepted traffic](../images/wireshark_mitm.png)
 
 ### Step 2: SSL Stripping 
 
