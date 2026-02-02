@@ -271,11 +271,11 @@ arp.spoof on
         ```bash
         sudo bettercap -iface wlan0 -caplet spoof.cap
         ```
-7. Verify module running state
+6. Verify module running state
 ```bash
 help
 ```
-6.  To see the intercepted traffic in real-time, enable the built-in sniffer. This will display non-encrypted traffic like HTTP URLs.
+7.  To see the intercepted traffic in real-time, enable the built-in sniffer. This will display non-encrypted traffic like HTTP URLs.
 ```bash
 net.sniff on
 ```
