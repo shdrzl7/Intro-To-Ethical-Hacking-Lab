@@ -1,4 +1,4 @@
-Challenge 01: Compromising Wi-Fi and Internal Network Traffic
+# Challenge 01: Compromising Wi-Fi and Internal Network Traffic
 
 ## Scenario
 A corporate Wi-Fi network is used by employees for internal connectivity. Your task is to assess the security of the wireless network and internal traffic.  
