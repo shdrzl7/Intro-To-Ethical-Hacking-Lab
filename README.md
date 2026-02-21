@@ -83,8 +83,7 @@ This repository explores a variety of attack techniques and the tools required t
 | **Metasploit Framework** | Exploitation and payload delivery. |
 | **BeEF XSS Framework**| Browser exploitation. |
 | **sqlmap** | Automatic SQL injection and database takeover. |
-| **ZAP Proxy** | Web application vulnerability scanning. |
-| **AutoIT** | Scripting for automating Windows GUI actions (for payload creation). |
+| **AutoIT** | Scripting for automating Windows actions for payload creation. |
 
 ---
 
